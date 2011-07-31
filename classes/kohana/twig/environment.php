@@ -4,7 +4,7 @@
  * Twig Loader
  *
  * @package kohana-twig
- * @author Jonathan Geiger
+ * @author Jonathan Geiger, (bits by) Alex Gisby <alex@solution10.com>
  */
 class Kohana_Twig_Environment
 {
@@ -22,7 +22,14 @@ class Kohana_Twig_Environment
 
 		if (!isset($instances[$env]))
 		{
-			$config = Kohana::config('twig.'.$env);
+			if(version_compare(kohana::VERSION, '3.2.0', '>='))
+			{
+				$config = Kohana::$config->load('twig.'.$env);
+			}
+			else
+			{
+				$config = Kohana::config('twig.'.$env);
+			}
 			
 			// Create the the loader
 			$twig_loader = $config['loader']['class'];
