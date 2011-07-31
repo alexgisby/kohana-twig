@@ -13,14 +13,15 @@ the template design.
 > **Flexible**: Twig is powered by a flexible lexer and parser. This allows the developer
 to define its own custom tags and filters, and create its own DSL.
 
-Credit goes to [Jonathan Geiger](http://github.com/jonathangeiger/kohana-twig) and
-[John Heathco](http://github.com/jheathco/kohana-twig) for creating the original modules.
-This fork contains the following improvements.
+Credit goes to [Jonathan Geiger](http://github.com/jonathangeiger/kohana-twig),
+[John Heathco](http://github.com/jheathco/kohana-twig) and [Mathew Davies](https://github.com/ThePixelDeveloper) 
+for creating the original modules.
+This fork contains the following improvements:
 
-* Sandbox configuration
-* Syntax 〃
-* Kohana template loader. Now templates aren't restricted to one directory
-* Updated to follow the Kohana convention
+* X-Version: This Twig module works across all 3.x strains of Kohana (3.0.x, 3.1.x, 3.2.x)
+* Updated Twig, currently running 1.1.2
+
+I (Alex) will try and keep this module up to date with Twig and Kohana. If you find a bug let me know!
 
 Installation
 ------------
