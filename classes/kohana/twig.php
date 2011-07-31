@@ -4,7 +4,7 @@
  * Class for managing Twig contexts as arrays
  *
  * @package kohana-twig
- * @author Jonathan Geiger
+ * @author Jonathan Geiger, (some bits by) Alex Gisby <alex@solution10.com>
  */
 abstract class Kohana_Twig
 {
@@ -120,7 +120,14 @@ abstract class Kohana_Twig
 		if ($env instanceof Twig_Environment == FALSE)
 		{
 			// Load the default extension from the config
-			$this->_extension = Kohana::config('twig.'.$env.'.loader.extension');
+			if(version_compare(Kohana::VERSION, '3.2.0', '>='))
+			{
+				$this->_extension = kohana::$config->load('twig.'.$env.'.loader.extension');
+			}
+			else
+			{
+				$this->_extension = Kohana::config('twig.'.$env.'.loader.extension');
+			}
 			
 			$env = Kohana_Twig_Environment::instance($env);
 		}
@@ -188,7 +195,14 @@ abstract class Kohana_Twig
 		catch (Exception $e)
 		{
 			// Display the exception message
-			Kohana::exception_handler($e);
+			if(version_compare(kohana::VERSION, '3.1.0', '>='))
+			{
+				Kohana_Exception::handler($e);
+			}
+			else
+			{
+				Kohana::exception_handler($e);
+			}
 
 			return '';
 		}
